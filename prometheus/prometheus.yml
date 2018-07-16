@@ -20,7 +20,8 @@ scrape_configs:
     static_configs:
     file_sd_configs:
     - files:
-      - 'file_sd/targets.json'
+      - 'file_sd/nodes.json'
+      refresh_interval: 5m
 #
   - job_name: 'cadvisor'
     scrape_interval: 15s
@@ -39,7 +40,7 @@ scrape_configs:
       module: [http_2xx]  # Look for a HTTP 200 response.
     file_sd_configs:
     - files:
-      - 'file_sd/targets.json'
+      - 'file_sd/sites.json'
       refresh_interval: 5m
     relabel_configs:
       - source_labels: [__address__]
