@@ -1,0 +1,18 @@
+global:
+  # ResolveTimeout is the time after which an alert is declared resolved
+  # if it has not been updated.
+  resolve_timeout: 10m
+
+  # The API URL to use for Slack notifications.
+  slack_api_url: https://hooks.slack.com/services/<Slack-API-Key>
+
+# The root node of the routing tree.
+route:
+  receiver: "slack-channel"
+
+# A list of notification receivers.
+receivers:
+  - name: "slack-channel"
+    slack_configs:
+    - channel: "#<slack-channel-name>"
+      send_resolved: true

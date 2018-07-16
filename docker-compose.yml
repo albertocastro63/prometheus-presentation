@@ -1,0 +1,62 @@
+version: '3.2'
+
+services:
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - type: "volume"
+        source: "prometheus-data"
+        target: "/prometheus"
+      - type: "bind"
+        source: "./prometheus/"
+        target: "/etc/prometheus/"
+    ports:
+      - "9090:9090"
+    networks:
+      - prom
+
+  blackbox:
+    image: prom/blackbox-exporter
+    volumes:
+      - "./blackbox/blackbox.yml:/etc/blackbox_exporter/config.yml"
+    ports:
+      - "9115:9115"
+    networks:
+      - prom
+#
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./grafana/provisioning/:/etc/grafana/provisioning/"
+    networks:
+      - prom
+#
+  alertmanager:
+    image: prom/alertmanager
+    volumes:
+      - "./alertmanager/alertmanager.yml:/etc/alertmanager/config.yml"
+    ports:
+      - "9093:9093"
+    networks:
+      - prom
+#
+  cadvisor:
+    image: google/cadvisor
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - prom
+
+networks:
+  prom:
+    driver: bridge
+
+volumes:
+  prometheus-data:
