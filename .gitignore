@@ -1,2 +1,2 @@
-file_sd/*
-!file_sd/targets.json
+prometheus/file_sd/*
+!prometheus/file_sd/targets.json

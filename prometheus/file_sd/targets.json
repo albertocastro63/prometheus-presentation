@@ -1,0 +1,22 @@
+[
+  {
+    "targets": [
+        "https://google.com",
+        "https://apple.com",
+        "https://weather.com/",
+        "https://prometheus.io"
+       ],
+    "labels": {
+      "job": "sites"
+    }
+  },
+  {
+    "targets": [
+      "172.31.83.170:9100",
+      "localhost:9100"
+    ],
+    "labels": {
+      "job": "nodes"
+    }
+  }
+]
