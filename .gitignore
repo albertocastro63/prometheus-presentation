@@ -1,2 +1,3 @@
 prometheus/file_sd/*
-!prometheus/file_sd/targets.json
+!prometheus/file_sd/nodes.json
+!prometheus/file_sd/sites.json
