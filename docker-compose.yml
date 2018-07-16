@@ -14,6 +14,8 @@ services:
       - "9090:9090"
     networks:
       - prom
+    extra_hosts:
+       - "outside:${HOST_IP}"
 
   blackbox:
     image: prom/blackbox-exporter
