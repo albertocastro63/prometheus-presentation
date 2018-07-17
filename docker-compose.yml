@@ -15,7 +15,7 @@ services:
     networks:
       - prom
     extra_hosts:
-       - "outside:${HOST_IP}"
+      - "outside:${HOST_IP}"
 
   blackbox:
     image: prom/blackbox-exporter
