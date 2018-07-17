@@ -2,7 +2,6 @@
   "annotations": {
     "list": [
       {
-        "$$hashKey": "object:84",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -17,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1525207067804,
+  "iteration": 1531775369872,
   "links": [],
   "panels": [
     {
@@ -31,7 +30,7 @@
       "id": 8,
       "panels": [],
       "repeat": null,
-      "title": "Senior Systems Sites Up",
+      "title": "Uptime",
       "type": "row"
     },
     {
@@ -58,6 +57,7 @@
         "x": 0,
         "y": 1
       },
+      "hideTimeOverride": false,
       "id": 4,
       "interval": null,
       "links": [],
@@ -245,12 +245,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:438",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:439",
           "name": "range to text",
           "value": 2
         }
@@ -278,7 +276,6 @@
       "tableColumn": "",
       "targets": [
         {
-          "$$hashKey": "object:372",
           "expr": "sum(1-probe_success{job=~\"$job\"})",
           "format": "time_series",
           "intervalFactor": 1,
@@ -286,14 +283,13 @@
         }
       ],
       "thresholds": "0.5,1",
-      "timeFrom": "10m",
+      "timeFrom": "1m",
       "timeShift": null,
       "title": "Sites Down",
       "type": "singlestat",
       "valueFontSize": "200%",
       "valueMaps": [
         {
-          "$$hashKey": "object:441",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -415,14 +411,14 @@
       ],
       "targets": [
         {
-          "$$hashKey": "object:737",
           "expr": "avg_over_time(probe_success{job=~\"$job\"}[5m])",
           "format": "table",
+          "instant": true,
           "intervalFactor": 1,
           "refId": "A"
         }
       ],
-      "timeFrom": "1s",
+      "timeFrom": "1m",
       "timeShift": null,
       "title": "Instance status",
       "transform": "table",
@@ -510,6 +506,7 @@
           "expr": "avg_over_time(probe_duration_seconds{job=~\"$job\"}[10m])*1000",
           "format": "table",
           "hide": false,
+          "instant": true,
           "intervalFactor": 1,
           "refId": "A"
         }
@@ -530,9 +527,8 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "ss_mbp",
-          "value": "ss_mbp"
+          "text": "sites",
+          "value": "sites"
         },
         "datasource": "Prometheus",
         "hide": 0,
@@ -543,7 +539,7 @@
         "options": [],
         "query": "label_values(job)",
         "refresh": 1,
-        "regex": "",
+        "regex": "/sites/",
         "sort": 0,
         "tagValuesQuery": "",
         "tags": [],
@@ -585,5 +581,5 @@
   "timezone": "",
   "title": "Uptime Monitoring",
   "uid": "Ey0DT-giz",
-  "version": 5
+  "version": 7
 }
